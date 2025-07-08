@@ -1,0 +1,252 @@
+.AgentDashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: #eeeeee;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.AgentDashboard,
+.AgentDashboard * {
+  box-sizing: border-box;
+    max-width: 99vw;
+}
+
+
+.AgentDashboard-progress-bar {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 40px;
+}
+
+.AgentDashboard-progress-bar-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.AgentDashboard-progress-bar-subtitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+}
+
+.AgentDashboard-progress-bar-progress {
+    width: 100%;
+    height: 10px;
+    background: #d1d5db;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.AgentDashboard-progress-bar-progress-runner {
+    height: 100%;
+    width: 25%;
+    background: linear-gradient(90deg, #25c301 0%, #a8e063 100%);
+    border-radius: 10px 0 0 10px;
+    transition: width 0.4s ease;
+}
+
+.AgentDashboard-progress-bar-progress-numeric {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 100px;
+}
+
+.AgentDashboard-progress-bar-progress-completed,
+.AgentDashboard-progress-bar-progress-current,
+.AgentDashboard-progress-bar-progress-remaining {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size:30px;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+.AgentDashboard-progress-bar-progress-completed span,
+.AgentDashboard-progress-bar-progress-current span,
+.AgentDashboard-progress-bar-progress-remaining span {
+    font-size: 15px;
+    color: #838383;
+}
+.AgentDashboard-curr-pickup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0px 40px;
+    
+}
+.AgentDashboard-curr-pickup-loc {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+}
+.AgentDashboard-curr-pickup-icon-loc img{
+    width: 25px;
+    height: 25px;
+}
+.AgentDashboard-curr-pickup-icon-loc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background-color: rgb(176, 212, 248);
+    border-radius: 10px;
+}
+.AgentDashboard-curr-pickup-title {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+.AgentDashboard-curr-pickup-title span {
+    font-size: 15px;
+    color: #838383;
+}
+.AgentDashboard-curr-pickup-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(6, 103, 189);
+    padding: 10px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.AgentDashboard-pickup-cards-container {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin: 20px 40px;
+    width: calc(100% - 80px);
+    transition: all 0.3s ease;
+}
+
+.AgentDashboard-pickup-cards-container:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.AgentDashboard-QuickActions {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 40px;
+}
+
+.AgentDashboard-QuickActions-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 20px;
+}
+
+.AgentDashboard-QuickActions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.AgentDashboard-QuickActions-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #f8f8f8;
+}
+
+.AgentDashboard-QuickActions-item:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.AgentDashboard-QuickActions-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(176, 212, 248);
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.AgentDashboard-QuickActions-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.AgentDashboard-QuickActions-item span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #2c2c2c;
+    text-align: center;
+}
+.AgentDashboard-pickup-cards-container-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+/* Make other cards consistent with the new bold style */
+.AgentDashboard-progress-bar,
+.AgentDashboard-curr-pickup,
+.AgentDashboard-QuickActions {
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.AgentDashboard-progress-bar:hover,
+.AgentDashboard-curr-pickup:hover,
+.AgentDashboard-QuickActions:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.AgentDashboard-progress-bar-title,
+.AgentDashboard-QuickActions-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+}
+
+.AgentDashboard-QuickActions-item {
+    background-color: #f5f7fa;
+    border: 1px solid #eaeef5;
+}
