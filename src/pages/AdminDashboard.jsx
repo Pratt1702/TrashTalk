@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
+import { supabase } from "../utils/supabaseClient"; // Adjust the path as necessary
 import "../styles/AdminDashboard.css";
 
 const AdminDashboard = () => {
+  const [user, setUser] = useState(null); // State to hold user information
+  const [loading, setLoading] = useState(true); // Loading state
+
   // Simulated data
   const stats = {
     totalWaste: 2847,
@@ -37,6 +41,52 @@ const AdminDashboard = () => {
       time: "4 hours ago",
     },
   ];
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.getUser();
+      if (error) {
+        setLoading(false);
+        return;
+      }
+      setUser(user);
+      console.log("User logged in:", user);
+
+      // Check if user already exists before inserting
+      const { data: existingUser, error: fetchError } = await supabase
+        .from("users")
+        .select("id")
+        .eq("id", user.id)
+        .single();
+
+      if (!existingUser) {
+        const { error: insertError } = await supabase
+          .from("users")
+          .insert([
+            { id: user.id, name: "admin", email: user.email, role: "admin" },
+          ]); // Default role
+        if (insertError) {
+          setLoading(false);
+          return; // Exit if there's an error
+        }
+        console.log("User added to database:", {
+          id: user.id,
+          email: user.email,
+        });
+      }
+
+      setLoading(false); // Set loading to false after processing
+    };
+
+    checkUser();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state
+  }
 
   return (
     <div className="admin-dashboard">

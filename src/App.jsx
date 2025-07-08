@@ -19,7 +19,7 @@ function App() {
         path="/"
         element={
           <ProtectedRoute>
-            <AdminDashboard />
+            <Login />
           </ProtectedRoute>
         }
       />

@@ -1,8 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "../styles/Sidebar.css";
 
 const Sidebar = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
+  };
+
   return (
     <div className="sidebar">
       <h2 className="sidebar-title">TrashTalk</h2>
@@ -17,7 +26,9 @@ const Sidebar = () => {
           <Link to="/waste-log">Waste Log</Link>
         </li>
         <li>
-          <Link to="/logout">Logout</Link>
+          <button onClick={handleLogout} className="logout-button">
+            Logout
+          </button>
         </li>
       </ul>
     </div>
