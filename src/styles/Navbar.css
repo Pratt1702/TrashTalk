@@ -1,0 +1,64 @@
+.Navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    width: 100%;
+    gap: 2rem;
+}
+
+.Navbar-truck-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.Navbar-truck-icon{
+    padding: 5px;
+    background-color: rgb(37, 195, 1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Navbar-header-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+}
+.Navbar-header-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.Navbar-header-userName {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+.Navbar-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.Navbar-user-profile-icon{
+    padding: 5px;
+    background-color: rgb(37, 195, 1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Navbar-user-profile-icon img {
+    width: 20px;
+    height: 20px;
+}
+.Navbar-user-profile-role {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.8;
+    border-radius: 20px;
+    border: 0.5px solid rgb(151, 151, 151);
+    padding: 5px 10px;
+}

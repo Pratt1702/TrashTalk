@@ -2,12 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
-import AdminDashboard from "./pages/AdminDashboard";
-// import MapView from "./pages/MapView";
-// import WasteLog from "./pages/WasteLog";
-// import Insights from "./pages/Insights";
-// import PublicReports from "./pages/PublicReports";
-// import RoutePlanning from "./pages/RoutePlanning";
+import AgentDashboard from "./pages/AgentDashboard";
 
 const Dashboard = () => <div>Dashboard (Protected)</div>;
 
@@ -21,6 +16,7 @@ function App() {
           <ProtectedRoute>
             <Login />
           </ProtectedRoute>
+
         }
       />
       <Route

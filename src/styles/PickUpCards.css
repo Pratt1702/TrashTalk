@@ -1,0 +1,78 @@
+.PickUpCards{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px 40px;
+    min-width: 100%;
+    gap: 30px;
+}
+.PickUpCards-indicator {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(37, 195, 1);
+    border-radius: 50%;
+}
+.PickUpCards-card-main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.PickUpCards-card-location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+.PickUpCards-card-location span {
+    font-size: 18px;
+    font-weight: 600;
+}
+.PickUpCards-card-category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    padding: 5px;
+    border-radius: 10px;
+}
+.PickUpCards-card-category-icon img {
+    width: 20px;
+    height: 20px;
+}
+.PickUpCards-card-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.PickUpCards-card-details-time {
+    font-size: 15px;
+    font-weight: 600;
+    opacity: 0.5;
+}
+.PickUpCards-card-details-category {
+    font-size: 15px;
+    font-weight: 600;
+    border: 0.5px solid rgb(0, 0, 0,0.4);
+    padding:2px 10px;
+    border-radius: 20px;
+}
+.PickUpCards-card-details-weight {
+    font-size: 15px;
+    font-weight: 600;
+    opacity: 0.5;
+}
+.PickUpCards-card-nav-status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: rgb(37, 195, 1);
+}
+.PickUpCards-card-nav-status img {
+    width: 20px;
+}
