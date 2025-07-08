@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Auth } from "@supabase/auth-ui-react";
@@ -13,18 +13,16 @@ const roles = [
 
 const Login = () => {
   const [role, setRole] = useState("");
-  const [isSignup, setIsSignup] = useState(false);
-  const { login } = useAuth(); // Get the login function from context
+  const { user } = useAuth();
   const navigate = useNavigate();
+  const currentOrigin = window.location.origin;
+  const redirectURL = `${currentOrigin}/dashboard`;
 
-  const handleLogin = async (email, password) => {
-    try {
-      await login(email, password);
-      navigate("/"); // Redirect to the dashboard after login
-    } catch (error) {
-      console.error("Login error:", error);
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
     }
-  };
+  }, [user, navigate]);
 
   return (
     <div className="login-bg">
@@ -38,7 +36,10 @@ const Login = () => {
         <select
           className="login-select"
           value={role}
-          onChange={(e) => setRole(e.target.value)}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setRole(e.target.value);
+          }}
         >
           <option value="">Select your role</option>
           {roles.map((role) => (
@@ -52,8 +53,6 @@ const Login = () => {
           appearance={{ theme: ThemeSupa }}
           theme="default"
           providers={[]} // Add any providers you want
-          redirectTo={role == "admin" ? "/dashboard" : "/collector"}
-          onLogin={handleLogin} // Custom login handler
         />
       </div>
     </div>

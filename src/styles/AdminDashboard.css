@@ -1,0 +1,149 @@
+.admin-dashboard {
+  display: flex;
+}
+.admin-dashboard,
+.admin-dashboard * {
+  box-sizing: border-box;
+  max-width: 99vw;
+  padding: none;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  width: 100%;
+  margin: 0;
+  gap: 20px;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.dashboard-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+  margin: 10px;
+  position: relative;
+  min-width: 200px;
+}
+
+.stat-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.stat-change {
+  color: green;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.stat-icon {
+  font-size: 24px;
+  color: #007bff;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quick-action-button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: bold;
+}
+
+.quick-action-button:hover {
+  background-color: #0056b3;
+}
+
+.dashboard-extra-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.stat-value-text {
+  font-size: 24px;
+  font-weight: bold;
+}
+.extras-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+.extras-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+.log-card {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+}
+
+.log-time {
+  color: #888;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .dashboard-content {
+    padding: 32px;
+    width: 100%;
+  }
+  .stat-item {
+    width: 100%;
+  }
+  .dashboard-content h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+}
