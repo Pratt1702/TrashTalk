@@ -19,8 +19,34 @@ const Login = () => {
 
   const handleLogin = async (email, password) => {
     try {
-      await login(email, password);
-      navigate("/"); // Redirect to the dashboard after login
+      const { data: userData, error: userError } = await supabase
+        .from("users")
+        .select("*")
+        .eq("email", email)
+        .single();
+
+      if (userError && userError.code === "PGRST116") {
+        // User not found
+        // Create new user in the users table
+        const { user, error: insertError } =
+          await supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
+        if (insertError) throw insertError;
+        // Insert user into the users table with their role and user ID
+        await supabase.from("users").insert([{ id: user.id, email, role }]);
+      } else {
+        // User exists, log them in
+        const { user } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+        // Update user ID in the users table
+        await supabase.from("users").update({ id: user.id }).eq("email", email);
+      }
+
+      navigate(role === "admin" ? "/dashboard" : "/collector"); // Redirect based on role
     } catch (error) {
       console.error("Login error:", error);
     }
@@ -52,7 +78,7 @@ const Login = () => {
           appearance={{ theme: ThemeSupa }}
           theme="default"
           providers={[]} // Add any providers you want
-          redirectTo={role == "admin" ? "/dashboard" : "/collector"}
+          redirectTo={role === "admin" ? "/dashboard" : "/collector"}
           onLogin={handleLogin} // Custom login handler
         />
       </div>
