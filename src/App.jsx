@@ -3,8 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AgentDashboard from "./pages/AgentDashboard";
-
-const Dashboard = () => <div>Dashboard (Protected)</div>;
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <ProtectedRoute>
             <Login />
           </ProtectedRoute>
-
         }
       />
       <Route
