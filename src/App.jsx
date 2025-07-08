@@ -9,17 +9,10 @@ import ProfileSetup from "./pages/ProfileSetup";
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/profile-setup" element={<ProfileSetup />} />
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <AdminDashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
+      {/* <Route path="/login" element={<Login />} />
+      <Route path="/profile-setup" element={<ProfileSetup />} /> */}
+      <Route path="/" element={<ProtectedRoute></ProtectedRoute>} />
+      {/* <Route
         path="/dashboard"
         element={
           <ProtectedRoute>
@@ -42,7 +35,7 @@ function App() {
             <AgentDashboard />
           </ProtectedRoute>
         }
-      />
+      /> */}
       {/* <Route
         path="/map"
         element={

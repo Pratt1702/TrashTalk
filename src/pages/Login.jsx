@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import { Auth } from "@supabase/auth-ui-react";
 import { supabase } from "../utils/supabaseClient"; // Adjust the path as necessary
 import { ThemeSupa } from "@supabase/auth-ui-shared";
@@ -12,18 +10,6 @@ const roles = [
 ];
 
 const Login = () => {
-  const [role, setRole] = useState("");
-  const { user } = useAuth();
-  const navigate = useNavigate();
-  const currentOrigin = window.location.origin;
-  const redirectURL = `${currentOrigin}/dashboard`;
-
-  useEffect(() => {
-    if (user) {
-      navigate("/dashboard");
-    }
-  }, [user, navigate]);
-
   return (
     <div className="login-bg">
       <div className="login-card">
@@ -35,7 +21,6 @@ const Login = () => {
         </div>
         <select
           className="login-select"
-          value={role}
           onChange={(e) => {
             console.log(e.target.value);
             setRole(e.target.value);
