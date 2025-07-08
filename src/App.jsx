@@ -4,16 +4,18 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AgentDashboard from "./pages/AgentDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import ProfileSetup from "./pages/ProfileSetup";
 
 function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/profile-setup" element={<ProfileSetup />} />
       <Route
         path="/"
         element={
           <ProtectedRoute>
-            <Login />
+            <AdminDashboard />
           </ProtectedRoute>
         }
       />
@@ -22,6 +24,22 @@ function App() {
         element={
           <ProtectedRoute>
             <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/agent"
+        element={
+          <ProtectedRoute>
+            <AgentDashboard />
           </ProtectedRoute>
         }
       />
