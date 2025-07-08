@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Auth } from "@supabase/auth-ui-react";
@@ -13,44 +13,16 @@ const roles = [
 
 const Login = () => {
   const [role, setRole] = useState("");
-  const [isSignup, setIsSignup] = useState(false);
-  const { login } = useAuth(); // Get the login function from context
+  const { user } = useAuth();
   const navigate = useNavigate();
+  const currentOrigin = window.location.origin;
+  const redirectURL = `${currentOrigin}/dashboard`;
 
-  const handleLogin = async (email, password) => {
-    try {
-      const { data: userData, error: userError } = await supabase
-        .from("users")
-        .select("*")
-        .eq("email", email)
-        .single();
-
-      if (userError && userError.code === "PGRST116") {
-        // User not found
-        // Create new user in the users table
-        const { user, error: insertError } =
-          await supabase.auth.signInWithPassword({
-            email,
-            password,
-          });
-        if (insertError) throw insertError;
-        // Insert user into the users table with their role and user ID
-        await supabase.from("users").insert([{ id: user.id, email, role }]);
-      } else {
-        // User exists, log them in
-        const { user } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-        // Update user ID in the users table
-        await supabase.from("users").update({ id: user.id }).eq("email", email);
-      }
-
-      navigate(role === "admin" ? "/dashboard" : "/collector"); // Redirect based on role
-    } catch (error) {
-      console.error("Login error:", error);
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
     }
-  };
+  }, [user, navigate]);
 
   return (
     <div className="login-bg">
@@ -64,7 +36,10 @@ const Login = () => {
         <select
           className="login-select"
           value={role}
-          onChange={(e) => setRole(e.target.value)}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setRole(e.target.value);
+          }}
         >
           <option value="">Select your role</option>
           {roles.map((role) => (
@@ -78,8 +53,6 @@ const Login = () => {
           appearance={{ theme: ThemeSupa }}
           theme="default"
           providers={[]} // Add any providers you want
-          redirectTo={role === "admin" ? "/dashboard" : "/collector"}
-          onLogin={handleLogin} // Custom login handler
         />
       </div>
     </div>
